@@ -7,7 +7,7 @@ public class AD_Settings : ModSettings
 {
     
     public bool EnableAvoidDarkness = true;
-    public float ScaledCostMultiplier = 100f;
+    public float ScaledCostMultiplier = 2500f;
 
     public void DoWindowContents(Rect wrect)
     {
@@ -19,7 +19,7 @@ public class AD_Settings : ModSettings
         
         
         options.Label("AvoidDarkness_ScaledCostMultiplier".Translate(ScaledCostMultiplier.ToString("0.00")));
-        ScaledCostMultiplier = options.Slider(ScaledCostMultiplier, 0f, 100f);
+        ScaledCostMultiplier = options.Slider(ScaledCostMultiplier, 0f, 10000f);
         options.Gap();
         
         if (options.ButtonText("AvoidDarkness_Reset".Translate()))

@@ -25,7 +25,7 @@ public static class Pawn_PathFollower_Patch
                 glowDelta = 1;
             }
             
-            return Mathf.RoundToInt(AvoidDarknessMod.settings.ScaledCostMultiplier * glowDelta);
+            return Mathf.RoundToInt(AvoidDarknessMod.settings.ScaledCostMultiplier * Mathf.Clamp01(glowDelta));
         }
     }
     [HarmonyPatch(nameof(Pawn_PathFollower.GenerateNewPath))]

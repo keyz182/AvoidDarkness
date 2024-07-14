@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <AvoidDarkness_EnableDarknessAvoid>Enable avoid darkness</AvoidDarkness_EnableDarknessAvoid>
-    <AvoidDarkness_ScaledCostMultiplier>Scale {0}</AvoidDarkness_ScaledCostMultiplier>
+    <AvoidDarkness_ScaledCostMultiplier>Scale {0}. Path costs above 10000 are usually considered unpathable, so be careful when setting this to multipliers above 5k.</AvoidDarkness_ScaledCostMultiplier>
     <AvoidDarkness_Reset>Reset</AvoidDarkness_Reset>
     <AvoidDarkness_SettingsCategory>AvoidDarkness</AvoidDarkness_SettingsCategory>
     

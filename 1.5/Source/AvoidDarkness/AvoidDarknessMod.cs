@@ -10,7 +10,6 @@ public class AvoidDarknessMod : Mod
 
     public AvoidDarknessMod(ModContentPack content) : base(content)
     {
-
         // initialize settings
         settings = GetSettings<AD_Settings>();
 #if DEBUG
