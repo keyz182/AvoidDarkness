@@ -1,6 +1,6 @@
-﻿using Verse;
+﻿using HarmonyLib;
 using UnityEngine;
-using HarmonyLib;
+using Verse;
 
 namespace AvoidDarkness;
 
@@ -15,7 +15,7 @@ public class AvoidDarknessMod : Mod
 #if DEBUG
         Harmony.DEBUG = true;
 #endif
-        Harmony harmony = new Harmony("keyz182.rimworld.AvoidDarkness.main");	
+        Harmony harmony = new("keyz182.rimworld.AvoidDarkness.main");
         harmony.PatchAll();
     }
 

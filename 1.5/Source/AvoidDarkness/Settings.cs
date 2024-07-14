@@ -10,15 +10,15 @@ public class Settings : ModSettings
 
     public void DoWindowContents(Rect wrect)
     {
-        var options = new Listing_Standard();
+        Listing_Standard options = new Listing_Standard();
         options.Begin(wrect);
-        
+
         options.CheckboxLabeled("AvoidDarkness_Settings_SettingName".Translate(), ref setting);
         options.Gap();
 
         options.End();
     }
-    
+
     public override void ExposeData()
     {
         Scribe_Values.Look(ref setting, "setting", true);

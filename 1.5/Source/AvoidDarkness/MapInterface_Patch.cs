@@ -14,20 +14,16 @@ public static class MapInterface_Patch
     {
         if (Find.CurrentMap == null)
             return;
-        if (!WorldRendererUtility.WorldRenderedNow)
-        {
-            DarknessDrawer.DarknessDrawerOnGUI();
-        }
+        if (!WorldRendererUtility.WorldRenderedNow) DarknessDrawer.DarknessDrawerOnGUI();
     }
-    
+
     [HarmonyPatch(nameof(MapInterface.MapInterfaceUpdate))]
     [HarmonyPostfix]
     public static void MapInterfaceUpdate_Patch()
     {
         if (Find.CurrentMap == null || WorldRendererUtility.WorldRenderedNow)
             return;
-        
+
         Find.CurrentMap.GetComponent<DarknessRectDrawerMapComponent>().DarknessRectDrawer.DarkGridUpdate();
     }
-    
 }

@@ -1,5 +1,3 @@
-using RimWorld;
-using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -9,37 +7,38 @@ public class DarknessRectDrawer(Map map) : ICellBoolGiver
 {
     public IntVec3[] darkCells = new IntVec3[map.cellIndices.NumGridCells];
 
-    public bool IsVisible = false;
-    
     public CellBoolDrawer drawerInt;
 
-    public Map map = map;
+    public bool IsVisible = false;
 
-    public Color Color => Color.red;
+    public Map map = map;
 
     public CellBoolDrawer Drawer
     {
         get
         {
             if (drawerInt == null)
-                drawerInt = new CellBoolDrawer( this, map.Size.x, map.Size.z, 13620, 0.33f);
+                drawerInt = new CellBoolDrawer(this, map.Size.x, map.Size.z, 13620);
             return drawerInt;
         }
     }
-    
+
+    public Color Color => Color.red;
+
     public bool GetCellBool(int index)
     {
-        return !this.map.fogGrid.IsFogged(index) && Mathf.Approximately(Find.CurrentMap.glowGrid.GroundGlowAt(this.map.cellIndices.IndexToCell(index)), 0);
+        return !map.fogGrid.IsFogged(index) &&
+               Mathf.Approximately(Find.CurrentMap.glowGrid.GroundGlowAt(map.cellIndices.IndexToCell(index)), 0);
     }
-    
+
 
     public Color GetCellExtraColor(int index)
     {
-        return Mathf.Approximately(Find.CurrentMap.glowGrid.GroundGlowAt(this.map.cellIndices.IndexToCell(index)), 0)
+        return Mathf.Approximately(Find.CurrentMap.glowGrid.GroundGlowAt(map.cellIndices.IndexToCell(index)), 0)
             ? Color.red
             : Color.white;
     }
-    
+
     public void DarkGridUpdate()
     {
         if (IsVisible)
