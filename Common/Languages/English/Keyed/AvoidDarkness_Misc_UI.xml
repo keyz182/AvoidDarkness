@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <AvoidDarkness_EnableDarknessAvoid>Enable avoid darkness</AvoidDarkness_EnableDarknessAvoid>
-    <AvoidDarkness_ScaledCostMultiplier>Scale {0}. Path costs above 10000 are usually considered unpathable, so be
-        careful when setting this to multipliers above 5k.
-    </AvoidDarkness_ScaledCostMultiplier>
+    <AvoidDarkness_ScaledCostMultiplier>Scale {0}. Path costs above 10000 are usually considered unpathable, so be careful when setting this to multipliers above 5k.</AvoidDarkness_ScaledCostMultiplier>
     <AvoidDarkness_Reset>Reset</AvoidDarkness_Reset>
     <AvoidDarkness_SettingsCategory>AvoidDarkness</AvoidDarkness_SettingsCategory>
-
-    <AvoidDarkness_ShowLightLevelOverlayToggleButton>Toggle light level value overlay.
-    </AvoidDarkness_ShowLightLevelOverlayToggleButton>
-    <AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>Toggle light level visual overlay.
-    </AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>
+    <AvoidDarkness_ShowLightLevelOverlayToggleButton>Toggle light level value overlay</AvoidDarkness_ShowLightLevelOverlayToggleButton>
+    <AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>Toggle complete darkness visual overlay</AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>
+    <AvoidDarkness_IgnoreNonPlayerFaction>Ignore non player factions when calculating darkness avoiding paths</AvoidDarkness_IgnoreNonPlayerFaction>
+    <AvoidDarkness_IgnoreAnimals>Ignore animals when calculating darkness avoiding paths</AvoidDarkness_IgnoreAnimals>
 </LanguageData>
