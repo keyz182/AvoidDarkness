@@ -26,7 +26,9 @@
         <DebugSymbols>false</DebugSymbols>
         <Optimize>true</Optimize>
     </PropertyGroup>
-
+    <PropertyGroup>
+        <CSharpier_Check>false</CSharpier_Check>
+    </PropertyGroup>
     <ItemGroup>
         <Reference Include="Assembly-CSharp">
             <HintPath>$(SteamPath)/RimWorldWin64_Data/Managed/Assembly-CSharp.dll</HintPath>
@@ -60,6 +62,10 @@
 
 
     <ItemGroup>
+        <PackageReference Include="CSharpier.MsBuild" Version="0.28.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Lib.Harmony" Version="2.*" ExcludeAssets="runtime"/>
     </ItemGroup>
 

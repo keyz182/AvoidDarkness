@@ -8,7 +8,8 @@ public class AvoidDarknessMod : Mod
 {
     public static AD_Settings settings;
 
-    public AvoidDarknessMod(ModContentPack content) : base(content)
+    public AvoidDarknessMod(ModContentPack content)
+        : base(content)
     {
         // initialize settings
         settings = GetSettings<AD_Settings>();

@@ -11,12 +11,18 @@ public static class PlaySettings_Patch
     [HarmonyPostfix]
     public static void DoPlaySettingsGlobalControls_Patch(WidgetRow row, bool worldView)
     {
-        row.ToggleableIcon(ref DarknessDrawer.IsVisible, Textures.ShowLightOverlay,
-            "AvoidDarkness_ShowLightLevelOverlayToggleButton".Translate(), SoundDefOf.Mouseover_ButtonToggle);
+        row.ToggleableIcon(
+            ref DarknessDrawer.IsVisible,
+            Textures.ShowLightOverlay,
+            "AvoidDarkness_ShowLightLevelOverlayToggleButton".Translate(),
+            SoundDefOf.Mouseover_ButtonToggle
+        );
         row.ToggleableIcon(
             ref Find.CurrentMap.GetComponent<DarknessRectDrawerMapComponent>().DarknessRectDrawer.IsVisible,
-            Textures.ShowLightRectOverlay, "AvoidDarkness_ShowLightLevelVisualOverlayToggleButton".Translate(),
-            SoundDefOf.Mouseover_ButtonToggle);
+            Textures.ShowLightRectOverlay,
+            "AvoidDarkness_ShowLightLevelVisualOverlayToggleButton".Translate(),
+            SoundDefOf.Mouseover_ButtonToggle
+        );
     }
 
     [HarmonyPatch(nameof(PlaySettings.ExposeData))]

@@ -25,9 +25,9 @@ public static class DarknessDrawer
     public static bool ShouldShow()
     {
         return IsVisible
-               && !Mouse.IsInputBlockedNow
-               && UI.MouseCell().InBounds(Find.CurrentMap)
-               && !UI.MouseCell().Fogged(Find.CurrentMap);
+            && !Mouse.IsInputBlockedNow
+            && UI.MouseCell().InBounds(Find.CurrentMap)
+            && !UI.MouseCell().Fogged(Find.CurrentMap);
     }
 
     public static void FillDarkRelevantCells(IntVec3 root, Map map)
@@ -37,8 +37,12 @@ public static class DarknessDrawer
         for (int index1 = 0; index1 < SampleNumCells_Dark; ++index1)
         {
             IntVec3 intVec3 = root + GenRadial.RadialPattern[index1];
-            if (intVec3.InBounds(map) && !intVec3.Fogged(map) &&
-                intVec3.GetTerrain(map).passability != Traversability.Impassable) darkRelevantCells.Add(intVec3);
+            if (
+                intVec3.InBounds(map)
+                && !intVec3.Fogged(map)
+                && intVec3.GetTerrain(map).passability != Traversability.Impassable
+            )
+                darkRelevantCells.Add(intVec3);
         }
     }
 
@@ -50,8 +54,11 @@ public static class DarknessDrawer
         {
             IntVec3 darkRelevantCell = darkRelevantCells[index];
             float num = Find.CurrentMap.glowGrid.GroundGlowAt(darkRelevantCell);
-            GenMapUI.DrawThingLabel((Vector3)GenMapUI.LabelDrawPosFor(darkRelevantCell), num.ToString("0.00"),
-                DarknessColor(num));
+            GenMapUI.DrawThingLabel(
+                (Vector3)GenMapUI.LabelDrawPosFor(darkRelevantCell),
+                num.ToString("0.00"),
+                DarknessColor(num)
+            );
         }
 
         darkCountedThings.Clear();

@@ -15,17 +15,24 @@ public class AD_Settings : ModSettings
         Listing_Standard options = new();
         options.Begin(wrect);
 
-        options.CheckboxLabeled("AvoidDarkness_EnableDarknessAvoid".Translate(), ref EnableAvoidDarkness);
+        options.CheckboxLabeled(
+            "AvoidDarkness_EnableDarknessAvoid".Translate(),
+            ref EnableAvoidDarkness
+        );
         options.Gap();
 
-        options.CheckboxLabeled("AvoidDarkness_IgnoreNonPlayerFaction".Translate(), ref IgnoreNonPlayerFaction);
+        options.CheckboxLabeled(
+            "AvoidDarkness_IgnoreNonPlayerFaction".Translate(),
+            ref IgnoreNonPlayerFaction
+        );
         options.Gap();
 
         options.CheckboxLabeled("AvoidDarkness_IgnoreAnimals".Translate(), ref IgnoreAnimals);
         options.Gap();
 
-
-        options.Label("AvoidDarkness_ScaledCostMultiplier".Translate(ScaledCostMultiplier.ToString("0.00")));
+        options.Label(
+            "AvoidDarkness_ScaledCostMultiplier".Translate(ScaledCostMultiplier.ToString("0.00"))
+        );
         ScaledCostMultiplier = options.Slider(ScaledCostMultiplier, 0f, 10000f);
         options.Gap();
 

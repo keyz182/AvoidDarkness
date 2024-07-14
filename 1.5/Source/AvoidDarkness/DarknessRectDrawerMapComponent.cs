@@ -6,7 +6,8 @@ public class DarknessRectDrawerMapComponent : MapComponent
 {
     public DarknessRectDrawer DarknessRectDrawer;
 
-    public DarknessRectDrawerMapComponent(Map map) : base(map)
+    public DarknessRectDrawerMapComponent(Map map)
+        : base(map)
     {
         DarknessRectDrawer = new DarknessRectDrawer(this.map);
     }

@@ -27,14 +27,19 @@ public class DarknessRectDrawer(Map map) : ICellBoolGiver
 
     public bool GetCellBool(int index)
     {
-        return !map.fogGrid.IsFogged(index) &&
-               Mathf.Approximately(Find.CurrentMap.glowGrid.GroundGlowAt(map.cellIndices.IndexToCell(index)), 0);
+        return !map.fogGrid.IsFogged(index)
+            && Mathf.Approximately(
+                Find.CurrentMap.glowGrid.GroundGlowAt(map.cellIndices.IndexToCell(index)),
+                0
+            );
     }
-
 
     public Color GetCellExtraColor(int index)
     {
-        return Mathf.Approximately(Find.CurrentMap.glowGrid.GroundGlowAt(map.cellIndices.IndexToCell(index)), 0)
+        return Mathf.Approximately(
+            Find.CurrentMap.glowGrid.GroundGlowAt(map.cellIndices.IndexToCell(index)),
+            0
+        )
             ? Color.red
             : Color.white;
     }
