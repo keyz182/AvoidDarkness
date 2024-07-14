@@ -12,14 +12,16 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <SteamPath Condition=" '$(RIMWORLD_STEAM_PATH)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\RimWorld</SteamPath>
+    <SteamPath Condition=" '$(RIMWORLD_STEAM_PATH)' != '' ">$(RIMWORLD_STEAM_PATH)</SteamPath>
     <SteamModsPath Condition=" '$(RIMWORLD_STEAM_MODS_PATH)' == '' ">$(SteamPath)/Mods</SteamModsPath>
+    <SteamModsPath Condition=" '$(RIMWORLD_STEAM_MODS_PATH)' != '' ">$(RIMWORLD_STEAM_MODS_PATH)</SteamModsPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
@@ -37,11 +39,17 @@
       <Private>False</Private>
     </Reference>
 
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(SteamPath)/RimWorldWin64_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>$(SteamPath)/RimWorldWin64_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
+  
   
   <ItemGroup>
     <Content Condition="Exists('$(SteamPath)/Data')" Include="$(SteamPath)/Data/**/*">
@@ -87,10 +95,16 @@
     <ExtraFiles Include="../../../LoadFolders.xml;../../../LICENSE;../../../README.md" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+  <PropertyGroup >
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <PreLinkEventUseInBuild>true</PreLinkEventUseInBuild>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+
+  <Target Name="PostBuildRelease" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Release' ">
+    <Message Condition="Exists('$(SteamPath)')" Text="*** RELEASE BUILD ***" Importance="high" />
     <Message Text="*** SteamPath = $(SteamPath) ***" Importance="high" />
     <Message Text="*** SteamModsPath = $(SteamModsPath) ***" Importance="high" />
-    <Message Condition="Exists('$(SteamPath)')" Text="*** TEST ***" Importance="high" />
     <Message Condition="!Exists('$(SteamPath)\Mods\$(AssemblyName)')"
       Text="*** $(SteamPath)\Mods\$(AssemblyName) ***" Importance="high" />
     <RemoveDir Condition="Exists('../../../Release')" Directories="../../../Release" />
@@ -101,6 +115,7 @@
     <Copy SourceFiles="@(CommonFiles)"
       DestinationFiles="@(CommonFiles->'../../../Release/Common/%(RecursiveDir)%(Filename)%(Extension)')"
       SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CompatibilityFiles)" DestinationFiles="@(CompatibilityFiles->'../../../Release/Compatibility/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
     
     <Copy SourceFiles="@(ReleaseFiles)"
       DestinationFiles="@(ReleaseFiles->'../../../Release/%(RecursiveDir)%(Filename)%(Extension)')"
@@ -117,7 +132,8 @@
     <ZipDirectory DestinationFile="../../../$(AssemblyName).zip" SourceDirectory="../../../Release" />
   </Target>
 
-  <Target Name="PostBuildScript" AfterTargets="Build" Condition=" '$(Configuration)' == 'Debug' ">
+  <Target Name="PostBuildDebug" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Debug' ">
+    <Message Condition="Exists('$(SteamPath)')" Text="*** DEBUG BUILD ***" Importance="high" />
     <RemoveDir Condition="Exists('../../../Release')" Directories="../../../Release" />
     <Delete Condition="Exists('../../../$(AssemblyName).zip')" Files="../../../$(AssemblyName).zip" />
     <Copy SourceFiles="@(AboutFiles)"
@@ -126,6 +142,7 @@
     <Copy SourceFiles="@(CommonFiles)"
       DestinationFiles="@(CommonFiles->'../../../Release/Common/%(RecursiveDir)%(Filename)%(Extension)')"
       SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(CompatibilityFiles)" DestinationFiles="@(CompatibilityFiles->'../../../Release/Compatibility/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
     
     <Copy SourceFiles="@(ReleaseFiles)"
       DestinationFiles="@(ReleaseFiles->'../../../Release/%(RecursiveDir)%(Filename)%(Extension)')"

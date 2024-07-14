@@ -6,13 +6,13 @@ namespace AvoidDarkness;
 
 public class AvoidDarknessMod : Mod
 {
-    public static Settings settings;
+    public static AD_Settings settings;
 
     public AvoidDarknessMod(ModContentPack content) : base(content)
     {
 
         // initialize settings
-        settings = GetSettings<Settings>();
+        settings = GetSettings<AD_Settings>();
 #if DEBUG
         Harmony.DEBUG = true;
 #endif

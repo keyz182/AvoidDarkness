@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+    <AvoidDarkness_EnableDarknessAvoid>Enable avoid darkness</AvoidDarkness_EnableDarknessAvoid>
+    <AvoidDarkness_ScaledCostMultiplier>Scale {0}</AvoidDarkness_ScaledCostMultiplier>
+    <AvoidDarkness_Reset>Reset</AvoidDarkness_Reset>
     <AvoidDarkness_SettingsCategory>AvoidDarkness</AvoidDarkness_SettingsCategory>
-    <AvoidDarkness_Settings_SettingName>Some Setting</AvoidDarkness_Settings_SettingName>
+    
+    <AvoidDarkness_ShowLightLevelOverlayToggleButton>Toggle light level overlay.</AvoidDarkness_ShowLightLevelOverlayToggleButton>
 </LanguageData>
