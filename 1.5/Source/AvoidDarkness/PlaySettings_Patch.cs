@@ -13,6 +13,7 @@ public static class PlaySettings_Patch
     public static void DoPlaySettingsGlobalControls_Patch(WidgetRow row, bool worldView)
     {
         row.ToggleableIcon(ref DarknessDrawer.IsVisible, Textures.ShowLightOverlay, (string) "AvoidDarkness_ShowLightLevelOverlayToggleButton".Translate(), SoundDefOf.Mouseover_ButtonToggle);
+        row.ToggleableIcon(ref Find.CurrentMap.GetComponent<DarknessRectDrawerMapComponent>().DarknessRectDrawer.IsVisible, Textures.ShowLightOverlay, (string) "AvoidDarkness_ShowLightLevelVisualOverlayToggleButton".Translate(), SoundDefOf.Mouseover_ButtonToggle);
     }
 
     [HarmonyPatch(nameof(PlaySettings.ExposeData))]

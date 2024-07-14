@@ -5,5 +5,6 @@
     <AvoidDarkness_Reset>Reset</AvoidDarkness_Reset>
     <AvoidDarkness_SettingsCategory>AvoidDarkness</AvoidDarkness_SettingsCategory>
     
-    <AvoidDarkness_ShowLightLevelOverlayToggleButton>Toggle light level overlay.</AvoidDarkness_ShowLightLevelOverlayToggleButton>
+    <AvoidDarkness_ShowLightLevelOverlayToggleButton>Toggle light level value overlay.</AvoidDarkness_ShowLightLevelOverlayToggleButton>
+    <AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>Toggle light level visual overlay.</AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>
 </LanguageData>
