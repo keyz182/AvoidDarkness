@@ -8,4 +8,6 @@
     <AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>Toggle complete darkness visual overlay</AvoidDarkness_ShowLightLevelVisualOverlayToggleButton>
     <AvoidDarkness_IgnoreNonPlayerFaction>Ignore non player factions when calculating darkness avoiding paths</AvoidDarkness_IgnoreNonPlayerFaction>
     <AvoidDarkness_IgnoreAnimals>Ignore animals when calculating darkness avoiding paths</AvoidDarkness_IgnoreAnimals>
+    <AvoidDarkness_TicksToCacheGlowGrid>Ticks between updates to light area (to reduce expensive calls to glow grid) {0}</AvoidDarkness_TicksToCacheGlowGrid>
+    <AvoidDarkness_LightArea>(AD) Light Area</AvoidDarkness_LightArea>
 </LanguageData>

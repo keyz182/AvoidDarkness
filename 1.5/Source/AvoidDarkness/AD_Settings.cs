@@ -9,6 +9,7 @@ public class AD_Settings : ModSettings
     public bool IgnoreAnimals = true;
     public bool IgnoreNonPlayerFaction = true;
     public float ScaledCostMultiplier = 2500f;
+    public int TicksToCacheGlowGrid = 300;
 
     public void DoWindowContents(Rect wrect)
     {
@@ -42,6 +43,9 @@ public class AD_Settings : ModSettings
             ScaledCostMultiplier = 100f;
         }
 
+        options.Label("AvoidDarkness_TicksToCacheGlowGrid".Translate(TicksToCacheGlowGrid));
+        options.IntAdjuster(ref TicksToCacheGlowGrid, 1, 60);
+
         options.End();
     }
 
@@ -51,5 +55,6 @@ public class AD_Settings : ModSettings
         Scribe_Values.Look(ref IgnoreNonPlayerFaction, "IgnoreNonPlayerFaction", true);
         Scribe_Values.Look(ref IgnoreAnimals, "IgnoreAnimals", true);
         Scribe_Values.Look(ref ScaledCostMultiplier, "ScaledCostMultiplier", 100f);
+        Scribe_Values.Look(ref TicksToCacheGlowGrid, "TicksToCacheGlowGrid", 300);
     }
 }
