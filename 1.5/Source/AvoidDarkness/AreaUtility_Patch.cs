@@ -15,7 +15,7 @@ public static class AreaUtility_Patch
     [HarmonyPostfix]
     public static void MakeAllowedAreaListFloatMenu_Patch()
     {
-        if (Find.WindowStack.windows.Any(win => win is MainTabWindow_Architect))
+        if (!Find.WindowStack.windows.Any(win => win is MainTabWindow_Architect))
             return;
 
         var window = Find.WindowStack.windows.Last();

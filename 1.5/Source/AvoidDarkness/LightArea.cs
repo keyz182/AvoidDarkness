@@ -48,7 +48,7 @@ public class LightArea : Area
     }
     public override Color Color
     {
-        get => Color.yellow;
+        get => new Color(0.7f, 0.7f, 0.1f);
     }
     public override int ListPriority
     {
