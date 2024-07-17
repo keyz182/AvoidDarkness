@@ -12,6 +12,8 @@ public class LightArea : Area
     public LightArea(AreaManager areaManager)
         : base(areaManager) { }
 
+    public LightArea() { }
+
     public void CheckNeedsUpdate()
     {
         // split the map cells into chunks of size TicksToCacheGlowGrid
