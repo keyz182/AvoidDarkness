@@ -1,3 +1,4 @@
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -39,7 +40,47 @@ public class LightArea : Area
         )
         {
             IntVec3 cell = areaManager.map.cellIndices.IndexToCell(idx);
-            innerGrid.Set(cell, areaManager.map.glowGrid.GroundGlowAt(cell) > 0f);
+
+            // If we have a door, check both sides, if both sides of the door are lit, we allow the door.
+            Building_Door door = areaManager.map.thingGrid.ThingAt<Building_Door>(cell);
+            if (door != null)
+            {
+                float glowA = 0f;
+                float glowB = 0f;
+
+                if (door.Rotation == Rot4.North || door.Rotation == Rot4.South)
+                {
+                    glowA = areaManager.map.glowGrid.GroundGlowAt(
+                        new IntVec3(cell.x, cell.y, cell.z + 1)
+                    );
+                    glowB = areaManager.map.glowGrid.GroundGlowAt(
+                        new IntVec3(cell.x, cell.y, cell.z - 1)
+                    );
+                }
+                else
+                {
+                    glowA = areaManager.map.glowGrid.GroundGlowAt(
+                        new IntVec3(cell.x + 1, cell.y, cell.z)
+                    );
+                    glowB = areaManager.map.glowGrid.GroundGlowAt(
+                        new IntVec3(cell.x - 1, cell.y, cell.z)
+                    );
+                }
+
+                if (Mathf.Approximately(Mathf.Min(glowA, glowB), 0))
+                {
+                    innerGrid.Set(cell, false);
+                }
+                else
+                {
+                    innerGrid.Set(cell, !Mathf.Approximately(glowA + glowB, 0));
+                }
+            }
+            else
+            {
+                innerGrid.Set(cell, areaManager.map.glowGrid.GroundGlowAt(cell) > 0f);
+            }
+
             MarkDirty(cell);
         }
     }
