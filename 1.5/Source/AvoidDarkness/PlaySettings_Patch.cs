@@ -11,6 +11,9 @@ public static class PlaySettings_Patch
     [HarmonyPostfix]
     public static void DoPlaySettingsGlobalControls_Patch(WidgetRow row, bool worldView)
     {
+        if (Find.CurrentMap == null)
+            return;
+
         row.ToggleableIcon(
             ref DarknessDrawer.IsVisible,
             Textures.ShowLightOverlay,
@@ -18,15 +21,19 @@ public static class PlaySettings_Patch
             SoundDefOf.Mouseover_ButtonToggle
         );
 
-        DarknessRectDrawer drawer = Find
-            .CurrentMap.GetComponent<DarknessRectDrawerMapComponent>()
-            .DarknessRectDrawer;
+        DarknessRectDrawerMapComponent comp =
+            Find.CurrentMap.GetComponent<DarknessRectDrawerMapComponent>();
 
-        if (drawer == null)
+        if (comp == null)
             return;
 
+        Log.Message(comp.DarknessRectDrawer.IsVisible);
+        Log.Message(Textures.ShowLightRectOverlay);
+        Log.Message("AvoidDarkness_ShowLightLevelVisualOverlayToggleButton".Translate());
+        Log.Message(SoundDefOf.Mouseover_ButtonToggle);
+
         row.ToggleableIcon(
-            ref Find.CurrentMap.GetComponent<DarknessRectDrawerMapComponent>().DarknessRectDrawer.IsVisible,
+            ref comp.DarknessRectDrawer.IsVisible,
             Textures.ShowLightRectOverlay,
             "AvoidDarkness_ShowLightLevelVisualOverlayToggleButton".Translate(),
             SoundDefOf.Mouseover_ButtonToggle
