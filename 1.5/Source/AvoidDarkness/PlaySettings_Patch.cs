@@ -27,11 +27,6 @@ public static class PlaySettings_Patch
         if (comp == null)
             return;
 
-        Log.Message(comp.DarknessRectDrawer.IsVisible);
-        Log.Message(Textures.ShowLightRectOverlay);
-        Log.Message("AvoidDarkness_ShowLightLevelVisualOverlayToggleButton".Translate());
-        Log.Message(SoundDefOf.Mouseover_ButtonToggle);
-
         row.ToggleableIcon(
             ref comp.DarknessRectDrawer.IsVisible,
             Textures.ShowLightRectOverlay,
