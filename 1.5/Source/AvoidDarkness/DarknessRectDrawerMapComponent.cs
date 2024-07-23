@@ -4,12 +4,25 @@ namespace AvoidDarkness;
 
 public class DarknessRectDrawerMapComponent : MapComponent
 {
-    public DarknessRectDrawer DarknessRectDrawer;
+    private DarknessRectDrawer _DarknessRectDrawer;
+    public DarknessRectDrawer DarknessRectDrawer
+    {
+        get
+        {
+            if (_DarknessRectDrawer == null)
+            {
+                _DarknessRectDrawer = new DarknessRectDrawer(this.map);
+            }
+
+            return _DarknessRectDrawer;
+        }
+    }
 
     public DarknessRectDrawerMapComponent(Map map)
         : base(map)
     {
-        DarknessRectDrawer = new DarknessRectDrawer(this.map);
+        if (_DarknessRectDrawer == null)
+            _DarknessRectDrawer = new DarknessRectDrawer(this.map);
     }
 
     public override void ExposeData()

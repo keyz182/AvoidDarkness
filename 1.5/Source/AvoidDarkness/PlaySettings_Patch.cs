@@ -17,6 +17,14 @@ public static class PlaySettings_Patch
             "AvoidDarkness_ShowLightLevelOverlayToggleButton".Translate(),
             SoundDefOf.Mouseover_ButtonToggle
         );
+
+        DarknessRectDrawer drawer = Find
+            .CurrentMap.GetComponent<DarknessRectDrawerMapComponent>()
+            .DarknessRectDrawer;
+
+        if (drawer == null)
+            return;
+
         row.ToggleableIcon(
             ref Find.CurrentMap.GetComponent<DarknessRectDrawerMapComponent>().DarknessRectDrawer.IsVisible,
             Textures.ShowLightRectOverlay,
